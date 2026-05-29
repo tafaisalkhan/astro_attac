@@ -1,7 +1,9 @@
 extends CharacterBody2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-var speed := 500
+@export var speed: = 15
+#var speed := 500
 
 
 func _physics_process(delta: float) -> void:
@@ -14,3 +16,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = speed  * direction
 	move_and_slide()
+	
+	if vertical_dir > 0:
+		animation_player.play("up")
+	elif vertical_dir < 0:
+		animation_player.play("down")
+	else:
+		animation_player.play("default")
+		
