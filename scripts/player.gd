@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	
+	#sprint ("player 1")
 	if Input.is_action_pressed("move_right"):
 		apply_force(Vector2(move_froce,0))
 	if Input.is_action_pressed("move_left"):

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cj8ujdvgfrrdb"]
 
+[ext_resource type="PackedScene" uid="uid://c5irj8nrhdteh" path="res://scenes/player_2.tscn" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://curcpsks5osuw" path="res://assets/textures/star_background.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://wb42il50p64e" path="res://scenes/collection_area.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b6wb0vlgt5lvb" path="res://scenes/player.tscn" id="2_yqjtg"]
@@ -65,5 +66,9 @@ position = Vector2(642, 486)
 
 [node name="asteroid3" parent="asteroids" unique_id=151586006 instance=ExtResource("3_lnu2h")]
 position = Vector2(1086, 596)
+
+[node name="player2" parent="." unique_id=1615360170 instance=ExtResource("1_iywne")]
+position = Vector2(121, 281)
+scale = Vector2(5.1236663, 4.7007003)
 
 [connection signal="body_exited" from="collectionArea" to="player" method="_on_collection_area_body_exited"]
