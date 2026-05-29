@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dksceti5bdt5e"]
+
+[ext_resource type="Script" uid="uid://df4ib3haafrua" path="res://scripts/asteroid.gd" id="1_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://b0l73e8ufbiuj" path="res://assets/textures/asteroid_grey.png" id="1_akfqu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mo6b"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
+radius = 42.426407
+
+[node name="asteroid" type="RigidBody2D" unique_id=613660128 groups=["astaroids"]]
+z_index = 5
+physics_material_override = SubResource("PhysicsMaterial_6mo6b")
+gravity_scale = 0.0
+script = ExtResource("1_6mo6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=640434603]
+texture = ExtResource("1_akfqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1866188296]
+shape = SubResource("CircleShape2D_6mo6b")

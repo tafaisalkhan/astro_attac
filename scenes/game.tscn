@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cj8ujdvgfrrdb"]
+
+[ext_resource type="Texture2D" uid="uid://curcpsks5osuw" path="res://assets/textures/star_background.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://wb42il50p64e" path="res://scenes/collection_area.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b6wb0vlgt5lvb" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dksceti5bdt5e" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
+
+[node name="game" type="Node2D" unique_id=1288658395]
+
+[node name="starts" type="Sprite2D" parent="." unique_id=1982738201]
+texture_repeat = 2
+position = Vector2(642.9999, 362)
+scale = Vector2(1.0222223, 1.0055555)
+texture = ExtResource("1_uwrxv")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
+metadata/_edit_lock_ = true
+
+[node name="MapBound" type="StaticBody2D" parent="." unique_id=1334220149]
+position = Vector2(0.00012207031, 6.1035156e-05)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Polygon2D" type="Polygon2D" parent="MapBound" unique_id=623063964]
+color = Color(0.91228896, 0.9122889, 0.91228884, 1)
+polygon = PackedVector2Array(132.9999, -1583.0004, 1176, -1287.0002, 1849.0001, -534.0001, 1950.0001, 475, 1829.0001, 1108, 657.99994, 1404, -748.0002, 1242, -1818.0004, 536, -1824.0004, -581.0001, -997.00024, -1213.0002, 146.9999, -1577.0004, 227.99991, -1704.0004, -1670.0004, -1065.0002, -2201.0005, -729.0001, -2161.0005, 239.99997, -1744.0004, 1161, -775.00024, 1592.0001, 610.99994, 1733.0001, 2017.0001, 1343, 2293, 475, 2219, -594.0001, 1533, -1482.0002, 213.99991, -1691.0004)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapBound" unique_id=2060702830]
+self_modulate = Color(1, 1, 0.49411765, 1)
+position = Vector2(276.9999, -465.00012)
+build_mode = 1
+polygon = PackedVector2Array(132.9999, -1583.0004, 1176, -1287.0002, 1849.0001, -534.0001, 1950.0001, 475, 1829.0001, 1108, 657.99994, 1404, -748.0002, 1242, -1818.0004, 536, -1824.0004, -581.0001, -997.00024, -1213.0002, 146.9999, -1577.0004, 227.99991, -1704.0004, -1670.0004, -1065.0002, -2201.0005, -729.0001, -2161.0005, 239.99997, -1744.0004, 1161, -775.00024, 1592.0001, 610.99994, 1733.0001, 2017.0001, 1343, 2293, 475, 2219, -594.0001, 1533, -1482.0002, 213.99991, -1691.0004)
+
+[node name="player" parent="." unique_id=1923723556 instance=ExtResource("2_yqjtg")]
+position = Vector2(300, 232)
+
+[node name="collectionArea" parent="." unique_id=1929266839 instance=ExtResource("2_lbhrr")]
+position = Vector2(0.00012207031, 6.1035156e-05)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="asteroids" type="Node2D" parent="." unique_id=1339580294]
+
+[node name="asteroid" parent="asteroids" unique_id=613660128 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid4" parent="asteroids" unique_id=542810275 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid5" parent="asteroids" unique_id=976392102 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid6" parent="asteroids" unique_id=1351050884 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid7" parent="asteroids" unique_id=1571650954 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid8" parent="asteroids" unique_id=737274425 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid9" parent="asteroids" unique_id=1478970875 instance=ExtResource("3_lnu2h")]
+position = Vector2(300, 459)
+
+[node name="asteroid2" parent="asteroids" unique_id=1552877374 instance=ExtResource("3_lnu2h")]
+position = Vector2(642, 486)
+
+[node name="asteroid3" parent="asteroids" unique_id=151586006 instance=ExtResource("3_lnu2h")]
+position = Vector2(1086, 596)
+
+[connection signal="body_exited" from="collectionArea" to="player" method="_on_collection_area_body_exited"]
