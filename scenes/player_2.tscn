@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d01gli3acs6sf" path="res://scripts/player_2.gd" id="1_s551d"]
 [ext_resource type="Texture2D" uid="uid://c7r2a7hvft7hg" path="res://assets/textures/player/player2.png" id="3_oc1kf"]
 [ext_resource type="Texture2D" uid="uid://c43wbnln7sl4" path="res://assets/textures/player/player3.png" id="4_0mr0g"]
+[ext_resource type="Texture2D" uid="uid://c0qyf4crwba7r" path="res://assets/textures/projectile/flash.png" id="5_0mr0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s551d"]
 radius = 2.0
@@ -80,6 +81,57 @@ _data = {
 &"up": SubResource("Animation_ne6jw")
 }
 
+[sub_resource type="Animation" id="Animation_b2c7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x4ukj"]
+resource_name = "new_animation"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4bc4"]
+_data = {
+&"RESET": SubResource("Animation_b2c7a"),
+&"new_animation": SubResource("Animation_x4ukj")
+}
+
 [node name="player2" type="CharacterBody2D" unique_id=1615360170]
 motion_mode = 1
 script = ExtResource("1_s551d")
@@ -101,3 +153,12 @@ autoplay = &"default"
 
 [node name="muzal" type="Marker2D" parent="." unique_id=1194968814]
 position = Vector2(48, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=510096470]
+root_node = NodePath("../flash")
+libraries/ = SubResource("AnimationLibrary_t4bc4")
+autoplay = &"new_animation"
+
+[node name="flash" type="Sprite2D" parent="." unique_id=971422259]
+position = Vector2(22, -1)
+texture = ExtResource("5_0mr0g")

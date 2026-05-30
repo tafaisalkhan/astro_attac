@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var muzal: Marker2D = $muzal
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
 
 signal shooter_single
 
@@ -9,13 +10,14 @@ signal shooter_single
 #var speed := 500
 
 func shoot() -> void:
-	print("emit           ")
+	print("emit")
 	shooter_single.emit()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		print("shot")
-		shoot()
+		#shoot()
+		animation_player_2.play("new_animation")
 
 func _physics_process(delta: float) -> void:
 	#print("player 2")
