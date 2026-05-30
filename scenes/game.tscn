@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://cj8ujdvgfrrdb"]
 
 [ext_resource type="PackedScene" uid="uid://c5irj8nrhdteh" path="res://scenes/player_2.tscn" id="1_iywne"]
+[ext_resource type="PackedScene" uid="uid://b8b5moq0iws83" path="res://scenes/projectile.tscn" id="1_p57ef"]
+[ext_resource type="Script" uid="uid://ctff41cl74if1" path="res://scripts/game.gd" id="1_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://curcpsks5osuw" path="res://assets/textures/star_background.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://wb42il50p64e" path="res://scenes/collection_area.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b6wb0vlgt5lvb" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dksceti5bdt5e" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
 
 [node name="game" type="Node2D" unique_id=1288658395]
+script = ExtResource("1_u5sy4")
 
 [node name="starts" type="Sprite2D" parent="." unique_id=1982738201]
 texture_repeat = 2
@@ -71,4 +74,9 @@ position = Vector2(1086, 596)
 position = Vector2(121, 281)
 scale = Vector2(5.1236663, 4.7007003)
 
+[node name="projectile" parent="." unique_id=904985413 instance=ExtResource("1_p57ef")]
+position = Vector2(257, 280)
+scale = Vector2(6.194497, 4.6745343)
+
 [connection signal="body_exited" from="collectionArea" to="player" method="_on_collection_area_body_exited"]
+[connection signal="shooter_single" from="player2" to="." method="_on_player_2_shooter_single"]
